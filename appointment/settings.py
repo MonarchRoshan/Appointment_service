@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'appointment.urls'
@@ -122,3 +123,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # Other renderer classes...
+    ],
+    # Other settings...
+}
+
+
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:8001',
+]
+
+CORS_ALLOWED_ORIGINS = [
+   "http://127.0.0.1:8001",   # Replace with your frontend URL
+    # Add other allowed origins if necessary
+]
+
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8001']
+
+CORS_ORIGIN_ALLOW_ALL = True
